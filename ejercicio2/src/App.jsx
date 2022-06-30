@@ -1,42 +1,43 @@
 import { useState } from 'react'
+import logo from './logo.svg'
+import './App.css'
 
-const App = () => {
-  const [counter, setCounter] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState('')
-
-  setTimeout(
-    () => {
-      setData('Llegaron los datos!')
-      setIsLoading(false)
-    },
-    5000
-  )
-
-  const incrementByOne = () => setCounter(counter + 1)
-  const decrementByOne = () => setCounter(counter - 1)
-  const resetToZero = () => setCounter(0)
-  
-  let toRender
-  if(isLoading) {
-    toRender = (<h1>Loading data....</h1>)
-  } else {
-    toRender = (<p>{data}</p>)
-  }
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      {toRender}
-      <div>{counter}</div>
-      <button onClick={incrementByOne} disabled ={counter >= 10}>
-        Increment
-      </button>
-      <button onClick={decrementByOne}>
-        Decrement
-      </button>
-      <button onClick={resetToZero} disabled = {counter <  10}>
-        Reset
-      </button>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Hello Vite + React!</p>
+        <p>
+          <button type="button" onClick={() => setCount((count) => count + 1)}>
+            count is: {count}
+          </button>
+        </p>
+        <p>
+          Edit <code>App.jsx</code> and save to test HMR updates.
+        </p>
+        <p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+          {' | '}
+          <a
+            className="App-link"
+            href="https://vitejs.dev/guide/features.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Vite Docs
+          </a>
+        </p>
+      </header>
     </div>
   )
 }
